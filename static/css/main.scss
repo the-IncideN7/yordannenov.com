@@ -1,0 +1,27 @@
+@mixin bgc {
+  background-color: red ;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #090E11;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: sans-serif;
+
+  p {
+    color: #eeeeee;
+    font-size: 54px;
+
+    span {
+      color: #bada55;
+    }
+  }
+}
