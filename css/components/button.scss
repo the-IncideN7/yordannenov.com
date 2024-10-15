@@ -1,0 +1,54 @@
+button {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background-color: var(--accent_primary);
+  height: 2.625rem;
+  font-weight: 800;
+  padding: calc(var(--spacing) - (var(--spacing) / 4)) calc(var(--spacing) + (var(--spacing) * 0.75));
+  border-radius: .5rem;
+  box-shadow: 0.25rem 0.25rem 1rem var(--accent_primary);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: .125rem;
+    pointer-events: none;
+    background: var(--color_primary);
+    @include transition(transform, background-color);
+  }
+
+  &::before {
+    top: -.5rem;
+    left: .5rem;
+    transform: scaleX(.05) translateX(0);
+    transform-origin: center right;
+  }
+
+  &::after {
+    bottom: -.5rem;
+    right: .5rem;
+    transform: scaleX(.05) translateX(0);
+    transform-origin: center left;
+  }
+
+  @include transition(background-color, color, box-shadow, border-radius);
+  @include hover {
+    background-color: var(--color_primary);
+    color: var(--accent_primary);
+    box-shadow: 0 0 0 transparent;
+    border-radius: .25rem 1.25rem;
+
+    &::before {
+      transform: scaleX(.5) translateX(-4.5rem);
+      background: var(--accent_primary);
+    }
+
+    &::after {
+      transform: scaleX(.5) translateX(4.5rem);
+      background: var(--accent_primary);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+&#contacts {
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+    width: 100%;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      max-width: 12rem;
+      max-height: 2rem;
+      object-fit: contain;
+    }
+  }
+
+  @media(min-width: $large_screen) {
+    .social-links {
+      flex-direction: row;
+      gap: calc(var(--spacing) * 4);
+    }
+  }
+}

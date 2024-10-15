@@ -1,0 +1,39 @@
+&#my_work {
+  .my-work-holder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing) * 2);
+    width: 100%;
+    flex-direction: column;
+
+    figure {
+      width: 100%;
+      padding: var(--spacing);
+      border-radius: var(--spacing);
+      @include shadows;
+
+      img {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+        margin-bottom: var(--spacing);
+      }
+
+      figcaption {
+        h3 {
+          margin-bottom: calc(var(--spacing) / 2);
+        }
+      }
+    }
+  }
+
+  @media(min-width: $large_screen) {
+    .my-work-holder {
+      flex-direction: row;
+
+      figure {
+        padding: calc(var(--spacing) * 2);
+        max-width: calc(50% - var(--spacing));
+      }
+    }
+  }
+}

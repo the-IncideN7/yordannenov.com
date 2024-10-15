@@ -1,0 +1,48 @@
+/* Mixins */
+
+/*
+  Mixin for transition handling.
+  $properties...: List of comma-separated CSS properties.
+*/
+@mixin transition($properties...) {
+  @media (prefers-reduced-motion: no-preference) {
+    // $transitionTiming: 375ms ease;
+    $transitionTiming: 750ms cubic-bezier(0,.75,.25,1);
+    @if length($properties) >= 2 {
+      $transitionProps: "";
+      @each $prop in $properties {
+        $transitionProps: $transitionProps + $prop + " " + $transitionTiming + ","
+      }
+      $transitionProps: str-slice($transitionProps, 1, -2);
+      $transitionProps: $transitionProps + ";";
+      transition: #{$transitionProps};
+    } @else {
+      transition: $properties $transitionTiming;
+    }
+  }
+}
+
+/*
+  Mixin for handling hover styles.
+  $active: Add the same effect to the .active class.
+*/
+@mixin hover ($active: null){
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  @if $active == active {
+    &.active {
+      @content;
+    }
+  }
+}
+
+@mixin shadows($inset: false) {
+  @if $inset {
+    box-shadow: inset .5rem .5rem 1rem var(--shadow_primary), inset -.5rem -.5rem 1rem var(--white);
+  } @else {
+    box-shadow: .5rem .5rem 1rem var(--shadow_primary), -.5rem -.5rem 1rem var(--white);
+  }
+}

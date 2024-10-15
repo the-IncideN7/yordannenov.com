@@ -1,0 +1,68 @@
+&#about {
+  .work-experience-list,
+  .other,
+  .free-time {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    width: 100%;
+  }
+
+  .work-experience-list {
+    gap: calc(var(--spacing) * 3);
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    .work-experience {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+
+      h4 {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        font-size: 1.25rem;
+        font-weight: 800;
+        gap: calc(var(--spacing) / 2);
+
+        span {
+          width: 100%;
+          font-size: 1rem;
+          font-weight: 400;
+        }
+      }
+
+      .about-company {
+        opacity: .5;
+      }
+
+      ul {
+        li {
+          font-size: .875rem;
+
+          &::before  {
+            content: "> ";
+            font-weight: 800;
+            color: var(--accent_primary);
+            @include transition(color);
+          }
+        }
+      }
+    }
+  }
+
+  .other,
+  .free-time {
+    p {
+      position: relative;
+      &::before  {
+        content: "> ";
+        font-weight: 800;
+        color: var(--accent_primary);
+        @include transition(color);
+      }
+    }
+  }
+}

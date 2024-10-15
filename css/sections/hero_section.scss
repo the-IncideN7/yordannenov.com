@@ -1,0 +1,216 @@
+&#hero_section {
+  article {
+    align-items: center;
+    justify-content: center;
+
+    @media(min-width: 65rem) {
+      justify-content: space-between;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    white-space: break-spaces;
+  }
+
+  .introduction {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: var(--spacing);
+
+    .profession {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing);
+
+      >p {
+        font-size: 4rem;
+        font-weight: 800;
+        color: var(--accent_primary);
+        @include transition(color);
+      }
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+
+        span {
+          color: var(--accent_primary);
+          font-weight: 800;
+          @include transition(color);
+        }
+      }
+    }
+  }
+
+  figure {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    width: 100%;
+    max-width: 27rem;
+
+    #portrait_holder {
+      position: relative;
+      border-radius: 100%;
+      overflow: hidden;
+      z-index: 1;
+      cursor: url("../images/portrait/cursor.png") 64 64, zoom-in;
+      @include shadows;
+      @include transition(border-radius, box-shadow);
+
+      img {
+        &[data-element="background"] {
+          position: relative;
+          mix-blend-mode: multiply;
+          @include transition(opacity);
+          opacity: .25;
+        }
+
+        &[data-element="portrait"],
+        &[data-element="controller"] {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        &[data-element="controller"] {
+          transform-origin: center left;
+          transform: rotate(-270deg) translate(-6rem, 6rem);
+          opacity: 0;
+          @include transition(transform, opacity);
+        }
+
+        &[data-element="keyboard"] {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0;
+        }
+        25% {
+          opacity: .75;
+        }
+        50% {
+          opacity: .25
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        border-radius: 100%;
+        @include transition(opacity, border-radius);
+        @include shadows(inset);
+      }
+
+      #hold_my_beer {
+        position: absolute;
+        display: none;
+        bottom: 1rem;
+        right: 1rem;
+        text-align: right;
+        opacity: 0;
+        @include transition(opacity);
+
+        &::before {
+          content: "CHEERS!";
+          position: absolute;
+          top: -4rem;
+          font-weight: 800;
+          right: 0;
+          font-size: 2rem;
+          pointer-events: none;
+          opacity: 0;
+          color: #ffcd49;
+          text-shadow: 0 0 .25rem #5d3611;
+          @include transition(opacity);
+          filter: drop-shadow(.25rem .25rem .5rem #20242c7a);
+        }
+
+        @include hover {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+
+      @include hover(active) {
+        border-radius: var(--spacing);
+        box-shadow: .5rem .5rem 1rem transparent, -.5rem -.5rem 1rem transparent;
+
+        img {
+          &[data-element="background"] {
+            opacity: 1;
+          }
+
+          &[data-element="controller"] {
+            transform: rotate(0) translate(0, 0);
+            opacity: 1;
+          }
+          &[data-element="keyboard"] {
+            animation: pulse 1250ms linear forwards;
+          }
+        }
+
+        &::before {
+          opacity: 1;
+          border-radius: var(--spacing);
+        }
+
+        #hold_my_beer {
+          opacity: 1;
+        }
+      }
+    }
+
+    figcaption {
+      text-align: center;
+    }
+  }
+
+  @media(min-width: $large_screen) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    .introduction {
+      gap: calc(var(--spacing) * 2);
+
+      .profession {
+        >p {
+          font-size: 6rem;
+        }
+
+        .title {
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+    figure {
+      #portrait_holder {
+        #hold_my_beer {
+          display: block;
+        }
+      }
+    }
+  }
+}

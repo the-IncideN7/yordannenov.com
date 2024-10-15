@@ -1,0 +1,42 @@
+.link {
+  position: relative;
+  text-decoration: none;
+  color: var(--color_primary);
+  font-weight: 800;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    height: .125rem;
+    bottom: -.25rem;
+  }
+
+  &::before {
+    width: 1rem;
+    background-color: var(--accent_primary);
+    @include transition(background-color);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    width: 100%;
+    right: .5rem;
+    background-color: var(--color_primary);
+    pointer-events: none;
+    @include transition(transform, background-color);
+    transform: scaleX(0) translateX(0);
+    transform-origin: center left;
+  }
+
+  @include transition(color);
+  @include hover(active) {
+    color: var(--accent_primary);
+
+    &::after {
+      transform: scaleX(.5) translateX(2rem);
+      background-color: var(--accent_primary);
+    }
+  }
+}
