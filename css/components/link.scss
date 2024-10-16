@@ -3,14 +3,14 @@
   text-decoration: none;
   color: var(--color_primary);
   font-weight: 800;
-  max-width: max-content;
+  display: inline-block;
 
   &::before,
   &::after {
     content: "";
     position: absolute;
     height: .125rem;
-    bottom: -.25rem;
+    bottom: -.125rem;
   }
 
   &::before {
