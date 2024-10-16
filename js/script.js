@@ -107,3 +107,14 @@ window.handleFAQSliders = function() {
   });
 }();
 
+$("#back_to_top").on("click", function() {
+  $(window).scrollTop(0);
+});
+
+window.onscroll = function () {
+  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500){
+      $("#back_to_top").addClass("active");
+  } else {
+    $("#back_to_top").removeClass("active");
+  }
+}
