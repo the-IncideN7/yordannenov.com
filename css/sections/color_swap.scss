@@ -59,7 +59,7 @@
       border-radius: .25rem;
       border: 1px solid var(--color_primary);
       cursor: pointer;
-      @include transition(background-color);
+      @include transition(background-color, color);
       @include hover(active) {
         background-color: var(--background_primary);
       }

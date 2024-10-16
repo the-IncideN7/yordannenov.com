@@ -35,13 +35,11 @@
       }
 
       .about-company {
-        opacity: .5;
+        opacity: .75;
       }
 
       ul {
         li {
-          font-size: .875rem;
-
           &::before  {
             content: "> ";
             font-weight: 800;

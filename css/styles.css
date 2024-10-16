@@ -316,10 +316,7 @@ section#about .work-experience-list .work-experience h4 span {
   font-weight: 400;
 }
 section#about .work-experience-list .work-experience .about-company {
-  opacity: 0.5;
-}
-section#about .work-experience-list .work-experience ul li {
-  font-size: 0.875rem;
+  opacity: 0.75;
 }
 section#about .work-experience-list .work-experience ul li::before {
   content: "> ";
@@ -403,7 +400,7 @@ section#color_swap #color_message span {
 }
 @media (prefers-reduced-motion: no-preference) {
   section#color_swap #color_message span {
-    transition: background-color 750ms cubic-bezier(0, 0.75, 0.25, 1);
+    transition: background-color 750ms cubic-bezier(0, 0.75, 0.25, 1),color 750ms cubic-bezier(0, 0.75, 0.25, 1);;
   }
 }
 @media (hover: hover) {
@@ -430,6 +427,7 @@ section#contacts .social-links img {
   max-height: 2rem;
   -o-object-fit: contain;
      object-fit: contain;
+  padding-bottom: 0.25rem;
 }
 @media (min-width: 40rem) {
   section#contacts .social-links {
@@ -441,6 +439,7 @@ section#faq .faq-holder {
   width: 100%;
 }
 section#faq .faq-holder .faq-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -631,21 +630,18 @@ section#hero_section figure {
 }
 section#hero_section figure #portrait_holder {
   position: relative;
-  border-radius: 100%;
+  border-top-left-radius: calc(var(--spacing) * 6);
+  border-top-right-radius: var(--spacing);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   overflow: hidden;
   z-index: 1;
   cursor: url("../images/portrait/cursor.png") 64 64, zoom-in;
-  box-shadow: 0.5rem 0.5rem 1rem var(--shadow_primary), -0.5rem -0.5rem 1rem var(--white);
-}
-@media (prefers-reduced-motion: no-preference) {
-  section#hero_section figure #portrait_holder {
-    transition: border-radius 750ms cubic-bezier(0, 0.75, 0.25, 1),box-shadow 750ms cubic-bezier(0, 0.75, 0.25, 1);;
-  }
 }
 section#hero_section figure #portrait_holder img[data-element=background] {
   position: relative;
   mix-blend-mode: multiply;
-  opacity: 0.25;
+  opacity: 0.125;
 }
 @media (prefers-reduced-motion: no-preference) {
   section#hero_section figure #portrait_holder img[data-element=background] {
@@ -695,12 +691,15 @@ section#hero_section figure #portrait_holder::before {
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-radius: 100%;
+  border-top-left-radius: calc(var(--spacing) * 6);
+  border-top-right-radius: var(--spacing);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   box-shadow: inset 0.5rem 0.5rem 1rem var(--shadow_primary), inset -0.5rem -0.5rem 1rem var(--white);
 }
 @media (prefers-reduced-motion: no-preference) {
   section#hero_section figure #portrait_holder::before {
-    transition: opacity 750ms cubic-bezier(0, 0.75, 0.25, 1),border-radius 750ms cubic-bezier(0, 0.75, 0.25, 1);;
+    transition: opacity 750ms cubic-bezier(0, 0.75, 0.25, 1);
   }
 }
 section#hero_section figure #portrait_holder #hold_my_beer {
@@ -740,10 +739,6 @@ section#hero_section figure #portrait_holder #hold_my_beer::before {
   }
 }
 @media (hover: hover) {
-  section#hero_section figure #portrait_holder:hover {
-    border-radius: var(--spacing);
-    box-shadow: 0.5rem 0.5rem 1rem transparent, -0.5rem -0.5rem 1rem transparent;
-  }
   section#hero_section figure #portrait_holder:hover img[data-element=background] {
     opacity: 1;
   }
@@ -761,10 +756,6 @@ section#hero_section figure #portrait_holder #hold_my_beer::before {
   section#hero_section figure #portrait_holder:hover #hold_my_beer {
     opacity: 1;
   }
-}
-section#hero_section figure #portrait_holder.active {
-  border-radius: var(--spacing);
-  box-shadow: 0.5rem 0.5rem 1rem transparent, -0.5rem -0.5rem 1rem transparent;
 }
 section#hero_section figure #portrait_holder.active img[data-element=background] {
   opacity: 1;
@@ -811,18 +802,52 @@ section#my_work .my-work-holder {
   flex-direction: column;
 }
 section#my_work .my-work-holder figure {
+  position: relative;
   width: 100%;
   padding: var(--spacing);
   border-radius: var(--spacing);
-  box-shadow: 0.5rem 0.5rem 1rem var(--shadow_primary), -0.5rem -0.5rem 1rem var(--white);
+  cursor: pointer;
 }
 section#my_work .my-work-holder figure img {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   margin-bottom: var(--spacing);
+  mix-blend-mode: multiply;
 }
 section#my_work .my-work-holder figure figcaption h3 {
   margin-bottom: calc(var(--spacing) / 2);
+}
+section#my_work .my-work-holder figure figcaption h3 a {
+  z-index: 10;
+}
+section#my_work .my-work-holder figure::before, section#my_work .my-work-holder figure::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: var(--spacing);
+}
+@media (prefers-reduced-motion: no-preference) {
+  section#my_work .my-work-holder figure::before, section#my_work .my-work-holder figure::after {
+    transition: opacity 750ms cubic-bezier(0, 0.75, 0.25, 1);
+  }
+}
+section#my_work .my-work-holder figure::before {
+  box-shadow: 0.5rem 0.5rem 1rem var(--shadow_primary), -0.5rem -0.5rem 1rem var(--white);
+}
+section#my_work .my-work-holder figure::after {
+  opacity: 0;
+  box-shadow: inset 0.5rem 0.5rem 1rem var(--shadow_primary), inset -0.5rem -0.5rem 1rem var(--white);
+}
+@media (hover: hover) {
+  section#my_work .my-work-holder figure:hover::before {
+    opacity: 0;
+  }
+  section#my_work .my-work-holder figure:hover::after {
+    opacity: 1;
+  }
 }
 @media (min-width: 40rem) {
   section#my_work .my-work-holder {

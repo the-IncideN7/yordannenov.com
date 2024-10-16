@@ -56,19 +56,20 @@
 
     #portrait_holder {
       position: relative;
-      border-radius: 100%;
+      border-top-left-radius: calc(var(--spacing) * 6);
+      border-top-right-radius: var(--spacing);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
       overflow: hidden;
       z-index: 1;
       cursor: url("../images/portrait/cursor.png") 64 64, zoom-in;
-      @include shadows;
-      @include transition(border-radius, box-shadow);
 
       img {
         &[data-element="background"] {
           position: relative;
           mix-blend-mode: multiply;
           @include transition(opacity);
-          opacity: .25;
+          opacity: .125;
         }
 
         &[data-element="portrait"],
@@ -116,8 +117,11 @@
         width: 100%;
         height: 100%;
         opacity: 0;
-        border-radius: 100%;
-        @include transition(opacity, border-radius);
+        border-top-left-radius: calc(var(--spacing) * 6);
+        border-top-right-radius: var(--spacing);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        @include transition(opacity);
         @include shadows(inset);
       }
 
@@ -153,9 +157,6 @@
       }
 
       @include hover(active) {
-        border-radius: var(--spacing);
-        box-shadow: .5rem .5rem 1rem transparent, -.5rem -.5rem 1rem transparent;
-
         img {
           &[data-element="background"] {
             opacity: 1;

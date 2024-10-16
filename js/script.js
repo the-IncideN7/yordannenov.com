@@ -48,7 +48,6 @@ window.handleColorSwap = function() {
       root.style.setProperty("--accent_primary", color);
       updateInputs(color);
     }
-    console.log(message);
     $("#color_message").empty().append(message);
   }
 
@@ -71,15 +70,13 @@ $("#color_input").on("focus", function() {
   this.select();
 });
 
-
-$("#color_message span").on("click", function() {
-  $(this).toggleClass("active");
-});
-
 $("#portrait_holder").on("click", function() {
   $(this).toggleClass("active");
 });
 
+$("#color_message").on("click", function() {
+  $(this).find("span").toggleClass("active");
+});
 
 window.handleFAQSliders = function() {
   var animationDuration = 375;

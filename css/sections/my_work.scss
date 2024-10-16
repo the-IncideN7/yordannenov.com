@@ -7,20 +7,57 @@
     flex-direction: column;
 
     figure {
+      position: relative;
       width: 100%;
       padding: var(--spacing);
       border-radius: var(--spacing);
-      @include shadows;
+      cursor: pointer;
 
       img {
         border-top-left-radius: .25rem;
         border-top-right-radius: .25rem;
         margin-bottom: var(--spacing);
+        mix-blend-mode: multiply;
       }
 
       figcaption {
         h3 {
           margin-bottom: calc(var(--spacing) / 2);
+
+          a {
+            z-index: 10;
+          }
+        }
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: var(--spacing);
+        @include transition(opacity);
+      }
+
+      &::before {
+        @include shadows;
+      }
+
+      &::after {
+        opacity: 0;
+        @include shadows(inset);
+      }
+
+      @include hover {
+        &::before {
+          opacity: 0;
+        }
+
+        &::after {
+          opacity: 1;
         }
       }
     }
