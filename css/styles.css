@@ -157,8 +157,7 @@ button::after {
   text-decoration: none;
   color: var(--color_primary);
   font-weight: 800;
-  max-width: -moz-max-content;
-  max-width: max-content;
+  display: inline-block;
 }
 .link::before, .link::after {
   content: "";
