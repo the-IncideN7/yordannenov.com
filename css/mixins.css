@@ -1,0 +1,9 @@
+/* Mixins */
+/*
+  Mixin for transition handling.
+  $properties...: List of comma-separated CSS properties.
+*/
+/*
+  Mixin for handling hover styles.
+  $active: Add the same effect to the .active class.
+*/

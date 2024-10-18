@@ -118,3 +118,15 @@ window.onscroll = function () {
     $("#back_to_top").removeClass("active");
   }
 }
+
+$("#burger_button").on("click", function() {
+  $(this).toggleClass("active");
+  $(this).siblings("ul").toggleClass("active");
+  $("#mobile_menu_overlay").toggleClass("active");
+});
+
+$(".handle-mobile-menu-closing").on("click", function() {
+  $("#mobile_menu_overlay").removeClass("active");
+  $("#burger_button").removeClass("active");
+  $("nav ul").removeClass("active");
+});
