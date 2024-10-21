@@ -37,14 +37,14 @@ window.handleColorSwap = function() {
     if(trigger.attr("id") == "reset_color_change_button") {
       root.style.setProperty("--accent_primary", initialColor);
       updateInputs(initialColor);
-      message = "Colors reset to the default: <span>" + initialColor + "</span>.";
+      message = "Colors reset to the default: <span class='emphasize-text'>" + initialColor + "</span>.";
     } else {
       var color = isColor(colorToBeSet) ? colorToBeSet : initialColor;
-      var messageColorCheckForDefault = colorToBeSet == initialColor ? "<span>" + color + "</span>. Oh. That's the default..." : "<span>" + color + "</span>. You are officially a developer now!";
+      var messageColorCheckForDefault = colorToBeSet == initialColor ? "<span class='emphasize-text'>" + color + "</span>. Oh. That's the default..." : "<span class='emphasize-text'>" + color + "</span>. You are officially a developer now!";
       message = isColor(colorToBeSet) ?
         "Congratulations! You've changed the accent color of the entire website to " + messageColorCheckForDefault
         :
-        "How is <span>" + colorToBeSet +  "</span>  a color? Back to default you go.";
+        "How is <span class='emphasize-text'>" + colorToBeSet +  "</span>  a color? Back to default you go.";
       root.style.setProperty("--accent_primary", color);
       updateInputs(color);
     }
@@ -75,7 +75,7 @@ $("#portrait_holder").on("click", function() {
 });
 
 $("#color_message").on("click", function() {
-  $(this).find("span").toggleClass("active");
+  $(".emphasize-text").toggleClass("active");
 });
 
 window.handleFAQSliders = function() {
@@ -117,7 +117,7 @@ window.onscroll = function () {
   } else {
     $("#back_to_top").removeClass("active");
   }
-}
+};
 
 $("#burger_button").on("click", function() {
   $(this).toggleClass("active");

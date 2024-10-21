@@ -114,6 +114,13 @@ body #mobile_menu_overlay {
 body #mobile_menu_overlay.active {
   transform: scaleY(1);
 }
+body * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+body *:focus {
+  outline: none;
+}
 
 /* @import components */
 button {
@@ -353,6 +360,25 @@ main {
 }
 main .emphasize-text {
   color: var(--accent_primary);
+  font-weight: 800;
+  background-color: var(--color_primary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color_primary);
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: no-preference) {
+  main .emphasize-text {
+    transition: background-color 750ms cubic-bezier(0, 0.75, 0.25, 1),color 750ms cubic-bezier(0, 0.75, 0.25, 1);;
+  }
+}
+@media (hover: hover) {
+  main .emphasize-text:hover {
+    background-color: var(--background_primary);
+  }
+}
+main .emphasize-text.active {
+  background-color: var(--background_primary);
 }
 main #back_to_top {
   position: sticky;
@@ -528,16 +554,10 @@ section#about .free-time p::before {
     transition: color 750ms cubic-bezier(0, 0.75, 0.25, 1);
   }
 }
-section#color_swap .peach-is-not-a-fruit {
+section#color_swap .peach-is-not-a-color {
   color: var(--color_primary);
   font-weight: 800;
   background-color: #fbcEb1;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-}
-section#color_swap .peach-is-not-a-fruit ~ .emphasize-text {
-  font-weight: 800;
-  background-color: var(--color_primary);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
 }
@@ -572,28 +592,6 @@ section#color_swap .color-picker-controls button {
 section#color_swap #color_message {
   width: 100%;
   text-align: center;
-}
-section#color_swap #color_message span {
-  color: var(--accent_primary);
-  font-weight: 800;
-  background-color: var(--color_primary);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--color_primary);
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: no-preference) {
-  section#color_swap #color_message span {
-    transition: background-color 750ms cubic-bezier(0, 0.75, 0.25, 1),color 750ms cubic-bezier(0, 0.75, 0.25, 1);;
-  }
-}
-@media (hover: hover) {
-  section#color_swap #color_message span:hover {
-    background-color: var(--background_primary);
-  }
-}
-section#color_swap #color_message span.active {
-  background-color: var(--background_primary);
 }
 section#contacts .social-links {
   display: flex;

@@ -27,6 +27,15 @@ body {
       transform: scaleY(1);
     }
   }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 /* @import components */
@@ -147,6 +156,16 @@ main {
 
   .emphasize-text {
     color: var(--accent_primary);
+    font-weight: 800;
+    background-color: var(--color_primary);
+    padding: .25rem .5rem;
+    border-radius: .25rem;
+    border: 1px solid var(--color_primary);
+    cursor: pointer;
+    @include transition(background-color, color);
+    @include hover(active) {
+      background-color: var(--background_primary);
+    }
   }
 
   #back_to_top {
